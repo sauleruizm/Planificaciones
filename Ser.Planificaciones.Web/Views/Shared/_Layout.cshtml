@@ -1,9 +1,119 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web
+@using System.Web.Optimization
+@model  Ser.Planificaciones.Models.Dashboard.DashboardViewModel
+
+<!DOCTYPE html>
+
 <html>
 <head>
-    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title data-bind="text:dashboardHandler.title"></title>
+
+    <!-- Core stylesheets -->
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/pixeladmin")
+    @Styles.Render("~/Content/widgets")
+    @Styles.Render("~/Content/ionicons")
+
+    <!-- Theme -->
+    @Styles.Render("~/Content/clean")
+
+    @RenderSection("Styles", false)
 </head>
 <body>
-	@RenderBody()
+    <!-- Nav -->
+    <nav class="px-nav px-nav-left">
+        <button type="button" class="px-nav-toggle" data-toggle="px-nav">
+            <span class="px-nav-toggle-arrow"></span>
+            <span class="navbar-toggle-icon"></span>
+            <span class="px-nav-toggle-label font-size-11">HIDE MENU</span>
+        </button>
+
+        <ul class="px-nav-content">
+            <li class="px-nav-item active">
+                <a href="index.html"><i class="px-nav-icon ion-home"></i><span class="px-nav-label">Main page</span></a>
+            </li>
+            <li class="px-nav-item">
+                <a href="second.html"><i class="px-nav-icon ion-star"></i><span class="px-nav-label">Second page</span></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Navbar -->
+    <nav class="navbar px-navbar">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" data-bind="text: dashboardHandler.Navbars.TopBar.CompanyName"></a>
+        </div>
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+            data-target="#px-navbar-collapse" aria-expanded="false">
+            <i class="navbar-toggle-icon"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="px-navbar-collapse">
+            @*<ul class="nav navbar-nav">
+                <li><a href="#">Link</a></li>
+            </ul>*@
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      Profile
+                    </a>
+                    <ul class="dropdown-menu" data-bind="foreach: dashboardHandler.Navbars.TopBar.Rights">
+                        <li>
+                            <a href="#">
+                                <i class="dropdown-icon fa fa-power-off" data-bind="text:Text"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    @RenderBody()
+   
+    <!-- Footer -->
+    @Html.Partial("FooterPartial")    
+
+    <!-- ==============================================================================
+  |
+  |  SCRIPTS
+  |
+  =============================================================================== -->
+
+    <!-- Load jQuery -->
+    @Scripts.Render("~/bundles/jquery")
+    <!-- Core scripts -->
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/pixeladmin")
+    <!-- Pace.js -->
+    @Scripts.Render("~/bundles/pace")
+
+
+
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/require")
+    @Scripts.Render("~/bundles/dashboard")
+    <script type="text/javascript">
+
+        var dashboardHandler;
+
+        $(function () {
+            dashboardHandler = @Html.Raw(Json.Encode(Model));
+            ko.applyBindings(new DashboardViewModel(dashboardHandler));
+        });
+
+    </script>
+
+
+
+
+    @RenderSection("Scripts", false)
 </body>
 </html>

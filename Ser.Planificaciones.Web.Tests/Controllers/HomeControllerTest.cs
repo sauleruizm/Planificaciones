@@ -10,13 +10,13 @@ using Ser.Planificaciones.Web.Controllers;
 namespace Ser.Planificaciones.Web.Tests
 {
 	[TestFixture]
-	public class HomeControllerTest
+    public class DashboarControllerTest
 	{
 		[Test]
 		public void Index()
 		{
 			// Arrange
-			var controller = new HomeController();
+			var controller = new DashboardController();
 
 			// Act
 			var result = (ViewResult)controller.Index();
