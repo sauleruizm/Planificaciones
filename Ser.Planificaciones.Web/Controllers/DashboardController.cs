@@ -13,9 +13,10 @@ namespace Ser.Planificaciones.Web.Controllers
     /// </summary>
 	public class DashboardController : BaseController
 	{
-        public ActionResult Index()
+        public override ActionResult Index()
         {
-            return View(base.DashboardIndex());
+            base.Index();
+            return View();
         }
 	}
 }

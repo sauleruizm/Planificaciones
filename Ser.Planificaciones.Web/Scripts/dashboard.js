@@ -33,22 +33,15 @@ function DashboardViewModel(dashboardViewModel) {
                 self.Active = ko.observable(link.Active || '');
             };
 
-            //self.navbars.topBar.Rights = ko.purecomputed(function (right) {                /// <summary>
-                /// 
-                /// </summary>
-                /// <param name="right) {"></param>    //
-            //});
-        }
+            self.navbars.Content = ko.observableArray(navbar.navbars.Content || []);
+            self.navbars.Content = function Content(link) {
 
-        self.content = ko.observableArray(navbar.content || []);
-        self.content = function Link(link) {
-
-            self.id = ko.observable(link.id || '');
-            self.class = ko.observable(link.class || '');
-            self.kO = ko.observable(link.kO || '');
-            self.href = ko.observable(link.href || '');
-            self.active = ko.observable(link.active || '');
+                self.Id = ko.observable(link.Id || '');
+                self.Class = ko.observable(link.Class || '');
+                self.Text = ko.observable(link.Text || '');
+                self.Href = ko.observable(link.Href || '');
+                self.Active = ko.observable(link.Active || '');
+            }
         }
     }
-
 }

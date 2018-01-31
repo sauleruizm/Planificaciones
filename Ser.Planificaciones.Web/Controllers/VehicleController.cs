@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Ser.Planificaciones.Web.Controllers
 {
@@ -10,9 +6,10 @@ namespace Ser.Planificaciones.Web.Controllers
     {
         //
         // GET: /Vehicle/
-        public ActionResult Index()
+        public override ActionResult Index()
         {
-            return View(base.DashboardIndex());
+            base.Index();
+            return View();
         }
 	}
 }

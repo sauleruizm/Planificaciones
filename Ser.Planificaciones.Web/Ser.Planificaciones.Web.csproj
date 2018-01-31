@@ -207,6 +207,7 @@
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\pace.min.js" />
     <Content Include="Scripts\pixeladmin.min.js" />
+    <Content Include="Scripts\vehicle.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
